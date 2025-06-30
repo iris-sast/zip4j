@@ -16,6 +16,7 @@ extends InputStream {
         this.is = is;
     }
 
+    @Override
     public int read() throws IOException {
         int readByte = this.is.read();
         if (readByte != -1) {
@@ -24,10 +25,12 @@ extends InputStream {
         return readByte;
     }
 
+    @Override
     public int read(byte[] b) throws IOException {
         return this.read(b, 0, b.length);
     }
 
+    @Override
     public int read(byte[] b, int off, int len) throws IOException {
         int readLen = this.is.read(b, off, len);
         if (readLen > 0 && this.is.getUnzipEngine() != null) {
@@ -36,6 +39,7 @@ extends InputStream {
         return readLen;
     }
 
+    @Override
     public void close() throws IOException {
         this.close(false);
     }
@@ -51,10 +55,12 @@ extends InputStream {
         }
     }
 
+    @Override
     public int available() throws IOException {
         return this.is.available();
     }
 
+    @Override
     public long skip(long n) throws IOException {
         return this.is.skip(n);
     }

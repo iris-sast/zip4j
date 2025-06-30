@@ -212,7 +212,7 @@ public class ZipFile {
             if (raf != null) {
                 try {
                     raf.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
         }
     }

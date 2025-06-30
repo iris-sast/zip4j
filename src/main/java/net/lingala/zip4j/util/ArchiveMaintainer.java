@@ -28,6 +28,7 @@ public class ArchiveMaintainer {
         if (runInThread) {
             Thread thread = new Thread("Zip4j"){
 
+                @Override
                 public void run() {
                     try {
                         ArchiveMaintainer.this.initRemoveZipFile(zipModel, fileHeader, progressMonitor);
@@ -293,6 +294,7 @@ public class ArchiveMaintainer {
         if (runInThread) {
             Thread thread = new Thread("Zip4j"){
 
+                @Override
                 public void run() {
                     try {
                         ArchiveMaintainer.this.initMergeSplitZipFile(zipModel, outputZipFile, progressMonitor);
@@ -356,7 +358,7 @@ public class ArchiveMaintainer {
                 try {
                     inputStream.close();
                     continue;
-                } catch (IOException e) {
+                } catch (IOException iOException) {
                     // empty catch block
                 }
             }
@@ -376,12 +378,12 @@ public class ArchiveMaintainer {
             if (outputStream != null) {
                 try {
                     outputStream.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
             if (inputStream != null) {
                 try {
                     inputStream.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
         }
     }
@@ -557,7 +559,7 @@ public class ArchiveMaintainer {
             if (outputStream != null) {
                 try {
                     outputStream.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
         }
     }

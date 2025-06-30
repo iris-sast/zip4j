@@ -92,6 +92,7 @@ implements IEncrypter {
         }
     }
 
+    @Override
     public int encryptData(byte[] buff) throws ZipException {
         if (buff == null) {
             throw new ZipException("input bytes are null, cannot perform AES encrpytion");
@@ -99,6 +100,7 @@ implements IEncrypter {
         return this.encryptData(buff, 0, buff.length);
     }
 
+    @Override
     public int encryptData(byte[] buff, int start, int len) throws ZipException {
         if (this.finished) {
             throw new ZipException("AES Encrypter is in finished state (A non 16 byte block has already been passed to encrypter)");

@@ -38,6 +38,7 @@ public class Unzip {
         if (runInThread) {
             Thread thread = new Thread("Zip4j"){
 
+                @Override
                 public void run() {
                     try {
                         Unzip.this.initExtractAll(fileHeaders, unzipParameters, progressMonitor, outPath);
@@ -76,6 +77,7 @@ public class Unzip {
         if (runInThread) {
             Thread thread = new Thread("Zip4j"){
 
+                @Override
                 public void run() {
                     try {
                         Unzip.this.initExtractFile(fileHeader, outPath, unzipParameters, newFileName, progressMonitor);
@@ -93,7 +95,7 @@ public class Unzip {
     }
 
     private void initExtractFile(FileHeader fileHeader, String outPath, UnzipParameters unzipParameters, String newFileName, ProgressMonitor progressMonitor) throws ZipException {
-        block12: {
+        block13: {
             if (fileHeader == null) {
                 throw new ZipException("fileHeader is null");
             }
@@ -102,18 +104,21 @@ public class Unzip {
                 if (!outPath.endsWith(InternalZipConstants.FILE_SEPARATOR)) {
                     outPath = outPath + InternalZipConstants.FILE_SEPARATOR;
                 }
+                String fileName = fileHeader.getFileName();
+                String completePath = outPath + fileName;
+                if (!new File(completePath).getCanonicalPath().startsWith(new File(outPath).getCanonicalPath())) {
+                    throw new ZipException("illegal file name that breaks out of the target directory: " + fileHeader.getFileName());
+                }
                 if (fileHeader.isDirectory()) {
                     try {
-                        String fileName = fileHeader.getFileName();
                         if (!Zip4jUtil.isStringNotNullAndNotEmpty(fileName)) {
                             return;
                         }
-                        String completePath = outPath + fileName;
                         File file = new File(completePath);
                         if (!file.exists()) {
                             file.mkdirs();
                         }
-                        break block12;
+                        break block13;
                     } catch (Exception e) {
                         progressMonitor.endProgressMonitorError(e);
                         throw new ZipException(e);

@@ -168,11 +168,13 @@ extends BaseOutputStream {
         this.zipModel.getEndCentralDirRecord().setSignature(101010256L);
     }
 
+    @Override
     public void write(int bval) throws IOException {
         byte[] b = new byte[]{(byte)bval};
         this.write(b, 0, 1);
     }
 
+    @Override
     public void write(byte[] b) throws IOException {
         if (b == null) {
             throw new NullPointerException();
@@ -183,6 +185,7 @@ extends BaseOutputStream {
         this.write(b, 0, b.length);
     }
 
+    @Override
     public void write(byte[] b, int off, int len) throws IOException {
         if (len == 0) {
             return;
@@ -274,6 +277,7 @@ extends BaseOutputStream {
         headerWriter.finalizeZipFile(this.zipModel, this.outputStream);
     }
 
+    @Override
     public void close() throws IOException {
         if (this.outputStream != null) {
             this.outputStream.close();

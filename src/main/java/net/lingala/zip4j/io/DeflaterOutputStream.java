@@ -23,6 +23,7 @@ extends CipherOutputStream {
         this.buff = new byte[4096];
     }
 
+    @Override
     public void putNextEntry(File file, ZipParameters zipParameters) throws ZipException {
         super.putNextEntry(file, zipParameters);
         if (zipParameters.getCompressionMethod() == 8) {
@@ -34,6 +35,7 @@ extends CipherOutputStream {
         }
     }
 
+    @Override
     public void write(byte[] b) throws IOException {
         this.write(b, 0, b.length);
     }
@@ -60,11 +62,13 @@ extends CipherOutputStream {
         }
     }
 
+    @Override
     public void write(int bval) throws IOException {
         byte[] b = new byte[]{(byte)bval};
         this.write(b, 0, 1);
     }
 
+    @Override
     public void write(byte[] buf, int off, int len) throws IOException {
         if (this.zipParameters.getCompressionMethod() != 8) {
             super.write(buf, off, len);
@@ -76,6 +80,7 @@ extends CipherOutputStream {
         }
     }
 
+    @Override
     public void closeEntry() throws IOException, ZipException {
         if (this.zipParameters.getCompressionMethod() == 8) {
             if (!this.deflater.finished()) {
@@ -89,6 +94,7 @@ extends CipherOutputStream {
         super.closeEntry();
     }
 
+    @Override
     public void finish() throws IOException, ZipException {
         super.finish();
     }

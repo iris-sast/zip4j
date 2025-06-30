@@ -98,6 +98,7 @@ implements IDecrypter {
         this.mac.init(this.macKey);
     }
 
+    @Override
     public int decryptData(byte[] buff, int start, int len) throws ZipException {
         if (this.aesEngine == null) {
             throw new ZipException("AES not initialized properly");
@@ -121,6 +122,7 @@ implements IDecrypter {
         }
     }
 
+    @Override
     public int decryptData(byte[] buff) throws ZipException {
         return this.decryptData(buff, 0, buff.length);
     }

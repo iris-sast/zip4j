@@ -50,6 +50,7 @@ public class ZipEngine {
             progressMonitor.setFileName(((File)fileList.get(0)).getAbsolutePath());
             Thread thread = new Thread("Zip4j"){
 
+                @Override
                 public void run() {
                     try {
                         ZipEngine.this.initAddFiles(fileList, parameters, progressMonitor);
@@ -163,12 +164,12 @@ public class ZipEngine {
             if (inputStream != null) {
                 try {
                     inputStream.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
             if (outputStream != null) {
                 try {
                     outputStream.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
         }
     }
@@ -207,7 +208,7 @@ public class ZipEngine {
             if (outputStream != null) {
                 try {
                     outputStream.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
         }
     }
@@ -305,7 +306,7 @@ public class ZipEngine {
             if (outputStream != null) {
                 try {
                     outputStream.close();
-                } catch (IOException e) {}
+                } catch (IOException iOException) {}
             }
         }
     }

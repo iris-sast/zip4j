@@ -33,6 +33,7 @@ extends BaseInputStream {
         this.isAESEncryptedFile = unzipEngine.getFileHeader().isEncrypted() && unzipEngine.getFileHeader().getEncryptionMethod() == 99;
     }
 
+    @Override
     public int available() {
         long amount = this.length - this.bytesRead;
         if (amount > Integer.MAX_VALUE) {
@@ -41,6 +42,7 @@ extends BaseInputStream {
         return (int)amount;
     }
 
+    @Override
     public int read() throws IOException {
         if (this.bytesRead >= this.length) {
             return -1;
@@ -57,6 +59,7 @@ extends BaseInputStream {
         return this.read(this.oneByteBuff, 0, 1) == -1 ? -1 : this.oneByteBuff[0] & 0xFF;
     }
 
+    @Override
     public int read(byte[] b) throws IOException {
         return this.read(b, 0, b.length);
     }
@@ -64,6 +67,7 @@ extends BaseInputStream {
     /*
      * WARNING - Removed try catching itself - possible behaviour change.
      */
+    @Override
     public int read(byte[] b, int off, int len) throws IOException {
         if ((long)len > this.length - this.bytesRead && (len = (int)(this.length - this.bytesRead)) == 0) {
             this.checkAndReadAESMacBytes();
@@ -125,6 +129,7 @@ extends BaseInputStream {
         }
     }
 
+    @Override
     public long skip(long amount) throws IOException {
         if (amount < 0L) {
             throw new IllegalArgumentException();
@@ -136,14 +141,17 @@ extends BaseInputStream {
         return amount;
     }
 
+    @Override
     public void close() throws IOException {
         this.raf.close();
     }
 
+    @Override
     public void seek(long pos) throws IOException {
         this.raf.seek(pos);
     }
 
+    @Override
     public UnzipEngine getUnzipEngine() {
         return this.unzipEngine;
     }

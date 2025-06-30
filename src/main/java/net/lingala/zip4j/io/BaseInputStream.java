@@ -9,6 +9,7 @@ import net.lingala.zip4j.unzip.UnzipEngine;
 
 public abstract class BaseInputStream
 extends InputStream {
+    @Override
     public int read() throws IOException {
         return 0;
     }
@@ -16,6 +17,7 @@ extends InputStream {
     public void seek(long pos) throws IOException {
     }
 
+    @Override
     public int available() throws IOException {
         return 0;
     }

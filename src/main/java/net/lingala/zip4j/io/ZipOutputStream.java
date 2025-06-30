@@ -18,15 +18,18 @@ extends DeflaterOutputStream {
         super(outputStream, zipModel);
     }
 
+    @Override
     public void write(int bval) throws IOException {
         byte[] b = new byte[]{(byte)bval};
         this.write(b, 0, 1);
     }
 
+    @Override
     public void write(byte[] b) throws IOException {
         this.write(b, 0, b.length);
     }
 
+    @Override
     public void write(byte[] b, int off, int len) throws IOException {
         this.crc.update(b, off, len);
         this.updateTotalBytesRead(len);

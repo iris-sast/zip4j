@@ -29,10 +29,12 @@ extends PartInputStream {
         this.uncompressedSize = unzipEngine.getFileHeader().getUncompressedSize();
     }
 
+    @Override
     public int read() throws IOException {
         return this.read(this.oneByteBuff, 0, 1) == -1 ? -1 : this.oneByteBuff[0] & 0xFF;
     }
 
+    @Override
     public int read(byte[] b) throws IOException {
         if (b == null) {
             throw new NullPointerException("input buffer is null");
@@ -40,6 +42,7 @@ extends PartInputStream {
         return this.read(b, 0, b.length);
     }
 
+    @Override
     public int read(byte[] b, int off, int len) throws IOException {
         if (b == null) {
             throw new NullPointerException("input buffer is null");
@@ -93,6 +96,7 @@ extends PartInputStream {
         this.inflater.setInput(this.buff, 0, len);
     }
 
+    @Override
     public long skip(long n) throws IOException {
         int total;
         int len;
@@ -111,19 +115,23 @@ extends PartInputStream {
         return total;
     }
 
+    @Override
     public void seek(long pos) throws IOException {
         super.seek(pos);
     }
 
+    @Override
     public int available() {
         return this.inflater.finished() ? 0 : 1;
     }
 
+    @Override
     public void close() throws IOException {
         this.inflater.end();
         super.close();
     }
 
+    @Override
     public UnzipEngine getUnzipEngine() {
         return super.getUnzipEngine();
     }

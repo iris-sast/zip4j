@@ -45,15 +45,18 @@ extends OutputStream {
         this.bytesWrittenForThisPart = 0L;
     }
 
+    @Override
     public void write(int b) throws IOException {
         byte[] buff = new byte[]{(byte)b};
         this.write(buff, 0, 1);
     }
 
+    @Override
     public void write(byte[] b) throws IOException {
         this.write(b, 0, b.length);
     }
 
+    @Override
     public void write(byte[] b, int off, int len) throws IOException {
         if (len <= 0) {
             return;
@@ -154,12 +157,14 @@ extends OutputStream {
         this.raf.seek(pos);
     }
 
+    @Override
     public void close() throws IOException {
         if (this.raf != null) {
             this.raf.close();
         }
     }
 
+    @Override
     public void flush() throws IOException {
     }
 

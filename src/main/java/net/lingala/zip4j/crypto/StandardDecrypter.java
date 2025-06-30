@@ -23,10 +23,12 @@ implements IDecrypter {
         this.init(headerBytes);
     }
 
+    @Override
     public int decryptData(byte[] buff) throws ZipException {
         return this.decryptData(buff, 0, buff.length);
     }
 
+    @Override
     public int decryptData(byte[] buff, int start, int len) throws ZipException {
         if (start < 0 || len < 0) {
             throw new ZipException("one of the input parameters were null in standard decrpyt data");

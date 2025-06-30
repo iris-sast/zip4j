@@ -37,6 +37,7 @@ implements IEncrypter {
         this.encryptData(this.headerBytes);
     }
 
+    @Override
     public int encryptData(byte[] buff) throws ZipException {
         if (buff == null) {
             throw new NullPointerException();
@@ -44,6 +45,7 @@ implements IEncrypter {
         return this.encryptData(buff, 0, buff.length);
     }
 
+    @Override
     public int encryptData(byte[] buff, int start, int len) throws ZipException {
         if (len < 0) {
             throw new ZipException("invalid length specified to decrpyt data");

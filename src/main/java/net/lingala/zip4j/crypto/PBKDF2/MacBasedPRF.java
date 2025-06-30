@@ -38,6 +38,7 @@ implements PRF {
         }
     }
 
+    @Override
     public byte[] doFinal(byte[] M) {
         byte[] r = this.mac.doFinal(M);
         return r;
@@ -48,10 +49,12 @@ implements PRF {
         return r;
     }
 
+    @Override
     public int getHLen() {
         return this.hLen;
     }
 
+    @Override
     public void init(byte[] P) {
         try {
             this.mac.init(new SecretKeySpec(P, this.macAlgorithm));

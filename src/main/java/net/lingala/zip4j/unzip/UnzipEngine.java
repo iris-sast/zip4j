@@ -149,7 +149,7 @@ lbl-1000:
             try {
                 raf.close();
                 throw e;
-            } catch (IOException e1) {
+            } catch (IOException iOException) {
                 // empty catch block
             }
             throw e;
@@ -301,8 +301,8 @@ lbl-1000:
             if (rafForLH != null) {
                 try {
                     rafForLH.close();
-                } catch (IOException e) {
-                } catch (Exception e) {}
+                } catch (IOException iOException) {
+                } catch (Exception exception) {}
             }
         }
     }
