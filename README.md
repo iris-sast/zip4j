@@ -7,16 +7,16 @@ This repository contains decompiled source code for the zip4j library versions 1
   ### Version 1.3.2 (Vulnerable)
   - **Tag**: `1.3.2`
   - **Status**: Contains path traversal vulnerability
-  - **Source**: Decompiled from `zip4j-1.3.2.jar` (Maven Central)
-  - **Buggy Commit**: `b844e4a2d0e02bacb8ab1c2001e7c3c7f4b35c9a`
-  - [1.3.2 jar download page](https://mvnrepository.com/artifact/net.lingala.zip4j/zip4j/1.3.2)
+  - **Source**: Decompiled from `zip4j-1.3.2-sources.jar` 
+  - **Buggy Commit**: `d87ffa2d64ffb3a0a1cf0c7a69c7b19d7015bfde`
+  - [1.3.2 sources jar download page](https://repo1.maven.org/maven2/net/lingala/zip4j/zip4j/1.3.2/)
 
   ### Version 1.3.3 (Fixed)
   - **Tag**: `1.3.3`
   - **Status**: Vulnerability patched
-  - **Source**: Decompiled from `zip4j-1.3.3.jar` (Maven Central)
-  - **Fixed Commit**: `cbabdcf15842de7e1ec66f20aa2163e95ed13a79`
-  - [1.3.3 jar download page](https://mvnrepository.com/artifact/net.lingala.zip4j/zip4j/1.3.3)
+  - **Source**: Decompiled from `zip4j-1.3.3-sources.jar` 
+  - **Fixed Commit**: `59aeea594ff885e06c25751dc6334dfea1bed8c6`
+  - [1.3.3 sources jar download page](https://repo1.maven.org/maven2/net/lingala/zip4j/1.3.3/)
 
 ## Original Project
 
